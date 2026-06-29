@@ -9,6 +9,11 @@
 ## Project Overview
 
 God's Life Superstores Database is a professionally designed SQL Server database project that models the operations of a modern multi-branch retail supermarket.
+## Entity Relationship Diagram (ERD)
+
+The diagram below illustrates the database schema and the relationships between all entities in the God's Life Superstores Database.
+
+![Entity Relationship Diagram](Images/Gods_Life_ERD.png)
 
 The project demonstrates industry-standard database design principles, relational data modelling, SQL development, and business reporting using realistic retail business scenarios. It was created as part of my professional portfolio to showcase practical database development and analytical skills applicable to retail and business intelligence environments.
 
