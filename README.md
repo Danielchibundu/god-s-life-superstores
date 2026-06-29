@@ -74,7 +74,7 @@ God-s-Life-Superstores-Database
 ├── Database
 │   ├── Create_Database.sql
 │   ├── Insert_Sample_Data.sql
-│   └── Views.sql
+│   
 │
 ├── Queries
 │   ├── Beginner.sql
@@ -82,6 +82,7 @@ God-s-Life-Superstores-Database
 │   ├── Advanced.sql
 │   ├── WindowFunctions.sql
 │   └── BusinessInsights.sql
+    └── Views.sql
 │
 ├── Documentation
 │   ├── Data_Dictionary.pdf
@@ -89,8 +90,6 @@ God-s-Life-Superstores-Database
 │   └── Business_Requirements.pdf
 │
 ├── Images
-│
-└── PowerBI
 ```
 
 ---
@@ -158,7 +157,6 @@ This database supports analysis such as:
 
 - Joins
 - Aggregations
-- Subqueries
 - Common Table Expressions (CTEs)
 - Window Functions
 - Views
@@ -184,12 +182,32 @@ This database supports analysis such as:
 Planned enhancements include:
 
 - Power BI dashboards
-- Stored procedures
 - Triggers
 - Index optimisation
 - Data warehouse model
 - ETL workflows
 - Automated reporting
+
+## How to Use This Project
+
+1. Download or clone the repository.
+2. Open Microsoft SQL Server Management Studio.
+3. Open the script in the Database folder.
+4. Execute the script to create the database, tables, relationships and sample data.
+5. Run the SQL files in the Queries folder to explore reports and business insights.
+
+## Business Insights
+
+This database can be used to analyse:
+
+- Branch revenue performance
+- Top-selling products
+- Customer spending behaviour
+- Inventory levels
+- Low-stock products
+- Employee sales performance
+- Supplier contribution
+- Product category performance
 
 ---
 
