@@ -1,90 +1,95 @@
 /*
 =============================================================
 PROJECT: God's Life Superstores Database
-FILE: Aggregations.sql
+FILE: Basic_Queries.sql
+AUTHOR: Daniel Chibundu Onyenweaku
 
 DESCRIPTION
-Business reporting queries using SQL aggregate functions.
+Basic SQL queries used to retrieve, filter and sort data.
 
-SKILLS
-- COUNT
-- SUM
-- AVG
-- MAX
-- MIN
-- GROUP BY
-- HAVING
+SKILLS DEMONSTRATED
+- SELECT
+- DISTINCT
+- WHERE
+- ORDER BY
+- TOP
+- IN
+- BETWEEN
+- LIKE
 =============================================================
 */
 
 -------------------------------------------------------------
--- 1. Total customers
+-- 1. Display all customers
 -------------------------------------------------------------
-SELECT COUNT(*) AS TotalCustomers
+SELECT *
 FROM Customers;
 
 -------------------------------------------------------------
--- 2. Total products
+-- 2. Display all products
 -------------------------------------------------------------
-SELECT COUNT(*) AS TotalProducts
+SELECT *
 FROM Products;
 
 -------------------------------------------------------------
--- 3. Average product price
+-- 3. Display all employees
 -------------------------------------------------------------
-SELECT AVG(selling_price) AS AveragePrice
+SELECT *
+FROM Employees;
+
+-------------------------------------------------------------
+-- 4. Display unique product categories
+-------------------------------------------------------------
+SELECT DISTINCT category_id
 FROM Products;
 
 -------------------------------------------------------------
--- 4. Most expensive product
+-- 5. Customers from Port Harcourt
 -------------------------------------------------------------
-SELECT MAX(selling_price) AS HighestPrice
-FROM Products;
+SELECT *
+FROM Customers
+WHERE city = 'Port Harcourt';
 
 -------------------------------------------------------------
--- 5. Cheapest product
--------------------------------------------------------------
-SELECT MIN(selling_price) AS LowestPrice
-FROM Products;
-
--------------------------------------------------------------
--- 6. Products per category
+-- 6. Products costing more than ₦10,000
 -------------------------------------------------------------
 SELECT
-    category_id,
-    COUNT(*) AS TotalProducts
+    product_name,
+    selling_price
 FROM Products
-GROUP BY category_id;
+WHERE selling_price > 10000;
 
 -------------------------------------------------------------
--- 7. Inventory by branch
+-- 7. Products between ₦2,000 and ₦5,000
 -------------------------------------------------------------
 SELECT
-    branch_id,
-    SUM(quantity_in_stock) AS TotalStock
-FROM Inventory
-GROUP BY branch_id;
-
--------------------------------------------------------------
--- 8. Revenue by branch
--------------------------------------------------------------
-SELECT
-    b.branch_name,
-    SUM(oi.quantity * oi.unit_price) AS Revenue
-FROM Branches b
-JOIN CustomerOrders o
-ON b.branch_id = o.branch_id
-JOIN OrderItems oi
-ON o.order_id = oi.order_id
-GROUP BY b.branch_name
-ORDER BY Revenue DESC;
-
--------------------------------------------------------------
--- 9. Categories with more than 20 products
--------------------------------------------------------------
-SELECT
-    category_id,
-    COUNT(*) AS NumberOfProducts
+    product_name,
+    selling_price
 FROM Products
-GROUP BY category_id
-HAVING COUNT(*) > 20;
+WHERE selling_price BETWEEN 2000 AND 5000;
+
+-------------------------------------------------------------
+-- 8. Female customers
+-------------------------------------------------------------
+SELECT
+    first_name,
+    last_name
+FROM Customers
+WHERE gender = 'Female';
+
+-------------------------------------------------------------
+-- 9. Products beginning with 'C'
+-------------------------------------------------------------
+SELECT
+    product_name
+FROM Products
+WHERE product_name LIKE 'C%';
+
+-------------------------------------------------------------
+-- 10. Top 10 expensive products
+-------------------------------------------------------------
+SELECT TOP 10
+    product_name,
+    selling_price
+FROM Products
+ORDER BY selling_price DESC;
